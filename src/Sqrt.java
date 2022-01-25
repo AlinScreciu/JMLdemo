@@ -3,7 +3,8 @@ public class Sqrt {
     /*@
     public normal_behavior
       requires 0 <= the_input;
-      ensures \result == Math.sqrt(the_input);
+      requires the_input < Double.MAX_VALUE;
+      ensures \result*\result == the_input;
     also public exceptional_behavior
       requires the_input < 0;
       signals (IllegalArgumentException e) true;
