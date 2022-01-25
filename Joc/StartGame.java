@@ -1,6 +1,6 @@
 package com.company;
 
-public class Main {
+public class StartGame {
     public static void main(String[] args) {
 
         int i = 30;

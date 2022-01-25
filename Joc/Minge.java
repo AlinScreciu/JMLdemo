@@ -23,24 +23,38 @@ public class Minge {
 
     /*@
     public exceptional_behavior
-    requires (x == 0 || x == 100) && (y >= 20 && y <= 30);
-    signals_only Exception;
-    signals (Exception e) ( e instanceof Gol);
+    requires ((x == 0 || x == 100) && (y >= 20 && y <= 30));
+    signals (Gol) ((x == 0 || x == 100) && (y >= 20 && y <= 30));
+    signals (Out) (false);
+    signals (Corner) (false);
+
+    also
+
+    public exceptional_behavior
+    requires ((x == 0 || x == 100) && !(y >= 20 && y <= 30));
+    signals (Gol) (false);
+    signals (Out) (false);
+    signals (Corner) ((x == 0 || x == 100) && !(y >= 20 && y <= 30));
+    also
+
+    public exceptional_behavior
+    requires ((y == 0 || y == 100) && !(x == 0 || x == 100));
     @*/
     public void shoot() throws Gol, Corner, Out {
-
 
         if (x == 0 || x == 100)
         {
             if (y >= 20 && y <= 30) {
-                Gol e = new Gol();
-                throw e;
+                //@ assert ((x == 0 || x == 100) && (y >= 40 && y <= 50));
+                throw new Gol();
             }
-//            else
-//                throw new Corner();
+            else {
+                //@ assert ((x == 0 || x == 100) && !(y >= 20 && y <= 30));
+                throw new Corner();
+            }
         }
-//        if (y == 0 || y == 100)
-//            throw new Out();
+        if (y == 0 || y == 100)
+            throw new Out();
 
     }
     //@ ensures x <= 100 && x >= 0;

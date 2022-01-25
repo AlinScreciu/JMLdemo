@@ -25,7 +25,7 @@ public class Match {
         Random gen = new Random();
         for (int i = 0 ; i < 90; i++)
         {
-            int moves = gen.nextInt(1,5);
+            int moves = gen.nextInt(5) + 1;
             for (int j = 0; j < moves; j++)
             {
                 minge.makeX();
