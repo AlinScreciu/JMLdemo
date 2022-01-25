@@ -11,7 +11,7 @@ public class Test {
                 '}';
     }
     public static void main(String[] args) {
-        Account a = new Account("test","123");
+        Account a = new Account(null,"123");
         a.login("123");
         System.out.println(toString(a));
         a.login("123");

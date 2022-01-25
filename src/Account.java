@@ -1,5 +1,3 @@
-package com.company;
-
 public class Account {
     public /*@ pure @*/ String getUserName() {
         return userName;

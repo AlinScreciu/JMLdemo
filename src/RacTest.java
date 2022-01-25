@@ -2,7 +2,7 @@
 public class RacTest {
 
     public static void main(String... args) {
-        Test a = new Test();
+        TestRac a = new TestRac();
         a.checkArgs(args.length);
         System.out.println("END");
     }

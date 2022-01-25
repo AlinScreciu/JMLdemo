@@ -7,25 +7,35 @@
 */
 
 public class FinalCourseGrade {
+    //@ public invariant (E1 >= 0 && E1 <= 10 && E2 >= 0 && E2 <= 10 && 0 <= L <= 4);
+    private /*@ spec_public @*/ final int E1, E2, L;
     /*@
-        requires L >= 0
-        && E1 >= 0
-        && E1 <= 10
-        && E2 >= 0
-        && E2 <= 10
-        && L <= 4;
-        ensures (\result == -1) <==> (L < 2)
-        && (\result == 0) <==> (E1 < 5 || E2 < 5 || E1+E2 < 12) &&  (L >= 2)
-        && (\result == E1+E2+L) <==> (E1 >= 5 && E2 >= 5 && L >= 2 && E1+E2 >= 12 && E1+E2+L >= 14);
+    requires (E1 >= 0 && E1 <= 10 && E2 >= 0 && E2 <= 10 && 0 <= L <= 4);
+    @*/
+    public FinalCourseGrade(int E1, int E2, int L)
+    {
+        this.E1 = E1;
+        this.E2 = E2;
+        this.L = L;
+    }
+    /*@
+        requires L < 2;
+        ensures \result == -1;
+        also
+        requires (E1 < 5 || E2 < 5 || E1 + E2 < 12) && L >=2;
+        ensures \result == 0;
+        also
+        requires (!(E1 < 5 || E2 < 5 || E1 + E2 < 12) && L >=2 )&& (E1 + E2 >= 12 && E1 + E2 + L >= 14);
+        ensures \result == E1+E2+L;
     @ */
-    public static int computeScore(int E1, int E2, int L) {
-        if (E1 >= 5 && E2 >= 5 && L >= 2 && E1+E2 >= 12 && E1+E2+L >= 14)
-            return E1+E2+L;
-        if ((E1 < 5 || E2 < 5 || E1+E2 < 12) &&  (L >= 2))
-            return 0;
-
+    public int computeScore() {
         if (L < 2)
             return -1;
+        if (E1 < 5 || E2 < 5 || E1 + E2 < 12)
+            return 0;
+        if (E1 + E2 >= 12 && E1 + E2 + L >= 14)
+            return E1+E2+L;
+
         return 0;
     }
 }
