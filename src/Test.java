@@ -9,10 +9,9 @@ public class Test {
                 '}';
     }
     public static void main(String[] args) {
-        Account a = new Account(null,"123");
-        a.login("123");
+        Account a = new Account("USER1","123");
+
         System.out.println(toString(a));
-        a.login("123");
 
         a.login("12");
         System.out.println(toString(a));
@@ -25,7 +24,9 @@ public class Test {
         a.login("123");
         System.out.println(toString(a));
         a.logout();
-        System.out.println(toString(a));
+        Account b = new Account("USER1","123");
+        b.login("123");
+        System.out.println(toString(b));
     }
 
 }
