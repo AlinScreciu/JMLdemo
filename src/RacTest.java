@@ -1,4 +1,5 @@
-// openjml -rac RacTest.java
+// openjml -rac RacTest.java TestRac.java
+// openjml-java -cp . RacTest
 public class RacTest {
 
     public static void main(String... args) {
